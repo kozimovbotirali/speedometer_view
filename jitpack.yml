@@ -1,5 +1,5 @@
 jdk:
   - openjdk11
 install:
-  - ./gradlew :speedometerview:build :speedometerview:publishToMavenLocal -x :speedometerview:test
+  - ./gradlew build :lib:publishToMavenLocal
   - find . -name "*.aar"
