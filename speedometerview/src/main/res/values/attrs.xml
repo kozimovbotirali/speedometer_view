@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SpeedometerView">
+        <attr name="maxSpeed" format="float" />
+        <attr name="speed" format="float" />
+        <attr name="speedStep" format="float" />
+        <attr name="stepColor" format="color" />
+        <attr name="textColor" format="color" />
+        <attr name="textCircleColor" format="color" />
+    </declare-styleable>
+</resources>
