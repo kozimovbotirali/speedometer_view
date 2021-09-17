@@ -1,0 +1,5 @@
+jdk:
+  - openjdk11
+install:
+  - ./gradlew :speedometerview:build :speedometerview:publishToMavenLocal -x :speedometerview:test
+  - find . -name "*.aar"
