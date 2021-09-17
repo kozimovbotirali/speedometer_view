@@ -1,6 +1,6 @@
 jdk:
   - openjdk11
 install:
-  - ./gradlew build :lib:publishToMavenLocal
+  - ./gradlew :speedometerview:build :speedometerview:publishToMavenLocal -x :speedometerview:test
   - find . -name "*.aar"
   chmod +x gradlew
