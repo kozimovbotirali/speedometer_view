@@ -24,7 +24,7 @@ class SpeedometerView @JvmOverloads constructor(
         }
 
     @ColorInt
-    var textColor: Int = context.getColor(R.color.red1)
+    var textColor: Int = context.getColor(R.color.initCircleColor)
         set(value) {
             field = value
             invalidate()
@@ -170,8 +170,8 @@ class SpeedometerView @JvmOverloads constructor(
 
     private fun drawCircle(canvas: Canvas) {
         drawBackground(canvas)
-        drawNeedle(canvas)
         drawTicks(canvas)
+        drawNeedle(canvas)
     }
 
     private fun drawNeedle(canvas: Canvas) {
@@ -194,20 +194,17 @@ class SpeedometerView @JvmOverloads constructor(
 
         canvas.drawArc(smallOval, 180f, 180f, true, textCirclePaint)
         val miniOval = getOval(canvas, 0.05f)
-//        canvas.drawArc(miniOval, 180f, 180f, true, miniCirclePaint)
+        canvas.drawArc(miniOval, 180f, 180f, true, miniCirclePaint)
 
         textPaint.textSize = miniOval.height()
         canvas.drawText(speed.toInt().toString(), miniOval.centerX(), miniOval.centerY() - (miniOval.height() / 2 + 5f), textPaint)
     }
 
     private fun drawTicks(canvas: Canvas) {
-        textPaint.textSize = CONST_TICK_LENGTH * 0.75f
 
         val availableAngle = 180
         val majorStep = (speedStepSize / maxSpeed * availableAngle)
         val oval = getOval(canvas, 1f)
-        val textOval = getOval(canvas, 0.8f)
-        val textOvalRadius = textOval.width() * 0.41f
         val radius = oval.width() * 0.41f
         var currentAngle = 0f
 
@@ -220,12 +217,6 @@ class SpeedometerView @JvmOverloads constructor(
                 tickPaint
             )
 
-            canvas.drawText(
-                (i * speedStepSize).toInt().toString(),
-                (textOval.centerX() + cos((180 - currentAngle) / 180 * Math.PI) * (textOvalRadius + CONST_TICK_LENGTH / 2)).toFloat(),
-                (textOval.centerY() - sin(currentAngle / 180 * Math.PI) * (textOvalRadius + CONST_TICK_LENGTH / 2)).toFloat(),
-                textPaint
-            )
             currentAngle += majorStep
         }
     }

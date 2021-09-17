@@ -42,15 +42,4 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation project(path: ':speedometerview')
-
-    /**
-     * kotlinx.coroutines
-     */
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2-native-mt"
-
-    /**
-     * ViewModelProviders
-     * */
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
 }
