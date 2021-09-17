@@ -3,3 +3,4 @@ jdk:
 install:
   - ./gradlew build :lib:publishToMavenLocal
   - find . -name "*.aar"
+  chmod +x gradlew
