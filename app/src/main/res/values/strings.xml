@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Speedometer_View</string>
+    <string name="restart">restart</string>
 </resources>

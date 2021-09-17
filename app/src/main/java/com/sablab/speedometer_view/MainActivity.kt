@@ -1,29 +1,40 @@
 package com.sablab.speedometer_view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.SeekBar
-import androidx.appcompat.widget.AppCompatSeekBar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.google.android.material.button.MaterialButton
 import com.sablab.speedometerview.SpeedometerView
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 
 class MainActivity : AppCompatActivity() {
+    private var job: Job? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val seekBar = findViewById<MaterialButton>(R.id.button)
+
+        seekBar.setOnClickListener {
+            startProgress()
+        }
+        startProgress()
+    }
+
+    private fun startProgress() {
         val speedometerView = findViewById<SpeedometerView>(R.id.speedometerView)
-        val seekBar = findViewById<AppCompatSeekBar>(R.id.seekBar)
 
-        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(p0: SeekBar?, p1: Int, p2: Boolean) {
-                speedometerView.speed = p1.toFloat()
+        job?.cancel()
+        job = lifecycleScope.launchWhenCreated {
+            for (i in 0..360) {
+                delay(1)
+                speedometerView.speed = i.toFloat()
             }
 
-            override fun onStartTrackingTouch(p0: SeekBar?) {
+            for (i in 360 downTo 0) {
+                delay(1)
+                speedometerView.speed = i.toFloat()
             }
-
-            override fun onStopTrackingTouch(p0: SeekBar?) {
-            }
-
-        })
+        }
     }
 }

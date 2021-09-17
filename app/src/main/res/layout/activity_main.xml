@@ -14,16 +14,16 @@
         app:maxSpeed="360"
         app:speed="180"
         app:speedStep="20"
-        app:stepColor="@color/teal_200"
-        app:textCircleColor="@color/purple_200"
-        app:textColor="@color/purple_500" />
+        app:stepColor="@color/white"
+        app:textColor="@color/white" />
 
-    <androidx.appcompat.widget.AppCompatSeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="match_parent"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:max="360"
-        android:progress="180"
+        android:text="@string/restart"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/speedometerView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

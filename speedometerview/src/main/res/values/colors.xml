@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="initCircleColor">#ffffff</color>
+    <color name="red1">#FF0000</color>
     <color name="black">#000000</color>
 </resources>
